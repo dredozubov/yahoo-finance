@@ -141,7 +141,7 @@ end
   def self.read_symbols(symb_str, cols)
      columns = "#{cols.map {|col| COLUMNS[col] }.join('')}"
      conn = open("http://finance.yahoo.com/d/quotes.csv?s=#{URI.escape(symb_str)}&f=#{columns}")
-     CSV.parse(conn.read, :headers => cols)
+     CSV.parse(conn.read, :headers => cols, :quote_char => '"')
   end
 
   def self.read_historical(symbol, start_date, end_date, options)

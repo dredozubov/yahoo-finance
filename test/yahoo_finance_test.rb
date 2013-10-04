@@ -51,5 +51,9 @@ class TestYahoo_finance_test < Test::Unit::TestCase
     quotes = YahooFinance.quotes(["GOOG"], [:name])
     assert_no_match /^\"/, quotes.first.name
   end
-    
+
+  def test_read_quoted_string_with_commas
+    assert_nothing_raised { YahooFinance.quotes(["P"], [:name]) }
+  end
+
 end
